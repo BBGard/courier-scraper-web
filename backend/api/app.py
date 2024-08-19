@@ -7,7 +7,8 @@ import os
 app = Flask(__name__)
 
 # Initialize CORS
-CORS(app, resources={r"/*": {"origins": "https://courier-scraper-web.vercel.app"}})
+# CORS(app, resources={r"/*": {"origins": "https://courier-scraper-web.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/fetch-article', methods=['POST'])
 def fetch_article():
