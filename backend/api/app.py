@@ -1,8 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import CORS
 from bs4 import BeautifulSoup
 import requests
+import os
 
 app = Flask(__name__)
+
+# Initialize CORS
+CORS(app, resources={r"/*": {"origins": "https://courier-scraper-web.vercel.app"}})
 
 @app.route('/fetch-article', methods=['POST'])
 def fetch_article():
@@ -41,10 +46,6 @@ def fetch_article():
 
     return jsonify({"title": title, "content": article_text.strip()})
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
-##
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
