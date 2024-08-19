@@ -6,7 +6,7 @@ document.getElementById('fetch-button').addEventListener('click', function() {
   }
 
 //   fetch('http://localhost:5000/fetch-article', {
-  fetch('/fetch-article', {
+  fetch('https://courier-scraper-web-backend.vercel.app/fetch-article', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
