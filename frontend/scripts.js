@@ -5,7 +5,8 @@ document.getElementById('fetch-button').addEventListener('click', function() {
       return;
   }
 
-  fetch('http://localhost:5000/fetch-article', {
+//   fetch('http://localhost:5000/fetch-article', {
+  fetch('/fetch-article', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
