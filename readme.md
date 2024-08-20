@@ -1,5 +1,3 @@
-Here's a `README.md` for your "Courier Python Scraper" application:
-
 # Courier Python Scraper
 
 ## Overview
