@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courier Python Scraper</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Courier Python Scraper</h1>
-        <label for="url-input">Enter Article URL:</label>
-        <input type="text" id="url-input" placeholder="https://www.thecourier.com.au/...">
-        <button id="fetch-button">Fetch Content</button>
+        <p class="description">This program is intended solely for educational purposes and personal use.<br> It
+            showcases a technique for extracting content from webpages and should not be used to bypass paywalls in
+            violation of terms of service or applicable laws.<br>Always respect copyright and content ownership.</p>
+
+        <p class="info">This program is powered by a Python backend that uses the BeautifulSoup library to scrape
+            content from webpages. The backend is hosted on a Flask server and the frontend is built with HTML, CSS, and
+            JavaScript.<br><br>For more information, visit the <a href="https://github.com/BBGard/courierPythonScraper">GitHub
+                repository for the web version</a>, or the <a href="https://github.com/BBGard/courier-scraper-web"></a>GitHub
+                repository for the local version.</p>
+<div class="divider"></div>
+                <p class="instructions">To use this program, simply enter the URL of an article from <a
+                    href="https://www.thecourier.com.au/">The Courier</a> and click the "Fetch Content" button. The title
+                and content of the article will be displayed below.</p>
+
+        <form class="form">
+            <label for="url-input">Enter Article URL:</label>
+            <input type="text" id="url-input" placeholder="https://www.thecourier.com.au/...">
+            <button id="fetch-button">Fetch Content</button>
+        </form>
         <h2 id="title"></h2>
         <div id="content"></div>
     </div>
     <script src="scripts.js"></script>
 </body>
+
 </html>
