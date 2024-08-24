@@ -30,10 +30,13 @@
 // });
 document.getElementById('fetch-button').addEventListener('click', function() {
     const url = document.getElementById('url-input').value;
+
     if (!url) {
         alert('Please enter an article URL.');
         return;
     }
+
+    console.log("fetching article from: ", url);
 
     fetch('https://courier-scraper-web-backend.vercel.app/fetch-article', {
         method: 'POST',
@@ -44,6 +47,8 @@ document.getElementById('fetch-button').addEventListener('click', function() {
     })
     .then(response => response.json())
     .then(data => {
+
+        console.log("data: ", data);
         const titleElement = document.getElementById('title');
         const contentElement = document.getElementById('content');
 
