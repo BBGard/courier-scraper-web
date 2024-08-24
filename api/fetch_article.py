@@ -48,7 +48,8 @@ def fetch_article():
     author_element = soup.find('a', {'data-testid': 'author-link'})
     if author_element:
         author_name = author_element.get_text()
-        author_link = author_element['href']
+        # author_link = author_element['href']
+        author_link = f"https://www.thecourier.com.au{author_element['href']}"
     else:
         author_name = "Author not found"
         author_link = "N/A"
