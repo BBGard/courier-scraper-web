@@ -38,7 +38,7 @@ document.getElementById('fetch-button').addEventListener('click', function() {
 
     console.log("fetching article from: ", url);
 
-    fetch('https://courier-scraper-web-backend.vercel.app/fetch-article', {
+    fetch('/api/fetch-article', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
