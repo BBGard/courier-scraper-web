@@ -11,6 +11,10 @@ def fetch_article():
     data = request.get_json()
     url = data.get('url')
 
+    print(f"Received URL: {data.get('url')}")
+    print(f"Fetching article from: {url}")
+
+
     try:
         response = requests.get(url)
         response.raise_for_status()
