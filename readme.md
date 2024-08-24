@@ -26,22 +26,20 @@ Courier Python Scraper is a web application designed to demonstrate how to fetch
    cd courier-python-scraper
    ```
 
-2. **Navigate to the backend directory and install dependencies:**
+2. **Install dependencies:**
 
    ```bash
-   cd backend
    pip install -r requirements.txt
    ```
 
-3. **Set up environment variables (if necessary).**
 
-4. **Run the backend server locally:**
+3. **Run the backend server locally:**
 
    ```bash
-   python app.py
+   python api/fetch_article.py
    ```
 
-5. **Deploy the backend to Vercel:**
+4. **Deploy to Vercel:**
 
    - Ensure you have the Vercel CLI installed.
    - Run `vercel` and follow the prompts to deploy your backend.
@@ -51,7 +49,7 @@ Courier Python Scraper is a web application designed to demonstrate how to fetch
 1. **Navigate to the frontend directory:**
 
    ```bash
-   cd ../frontend
+   cd public
    ```
 
 2. **Install dependencies:**
@@ -77,7 +75,7 @@ Ensure that your backend server allows requests from the frontend. In the backen
 
 ```python
 from flask_cors import CORS
-CORS(app, resources={r"/*": {"origins": "https://courier-scraper-web.vercel.app"}})
+CORS(app)
 ```
 
 ## Usage
