@@ -25,6 +25,8 @@ document.getElementById('fetch-button').addEventListener('click', function(event
         console.log("data: ", data);
         const titleElement = document.getElementById('title');
         const contentElement = document.getElementById('content');
+        const authorElement = document.getElementById('author');
+
 
         if (data.title && data.content) {
             titleElement.innerHTML = `<h1>${data.title}</h1>`;
@@ -33,9 +35,17 @@ document.getElementById('fetch-button').addEventListener('click', function(event
                 .map(paragraph => `<p>${paragraph}</p>`)
                 .join('\n');
             contentElement.innerHTML = formattedContent;
+
+            if (data.author_name && data.author_link) {
+                authorElement.innerHTML = `<p>Author: <a href="${data.author_link}" target="_blank">${data.author_name}</a></p>`;
+            } else {
+                authorElement.innerHTML = '<p>Author information not available</p>';
+            }
+
         } else {
             titleElement.innerHTML = '<h1>No title found</h1>';
             contentElement.innerHTML = '<p>No content found</p>';
+            authorElement.innerHTML = '<p>Author information not available</p>';
         }
     })
     .catch(error => {

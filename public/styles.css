@@ -77,16 +77,31 @@ button:hover {
   background-color: #0056b3;
 }
 
+.logo {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 100px;
+}
+
 h2 {
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 50px;
+  color: #333;
+  max-width: 640px;
+}
+
+#author {
+  margin: 0 auto;
+  margin-top: 10px;
+  line-height: 1.6;
   color: #333;
   max-width: 640px;
 }
 
 #content {
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 40px;
   line-height: 1.6;
   color: #333;
   max-width: 640px;

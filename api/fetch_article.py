@@ -18,9 +18,12 @@ def fetch_article():
         return jsonify({"error": str(e)}), 400
 
     soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Extract title
     title = soup.find('h1').get_text() if soup.find('h1') else "No title found"
     paragraphs = soup.find_all('p')
 
+    # Extract article content
     article_text = []
     capture = False
     stop_phrases = [
@@ -41,9 +44,20 @@ def fetch_article():
         if capture:
             article_text.append(text)
 
+    # Extract author name and profile URL
+    author_element = soup.find('a', {'data-testid': 'author-link'})
+    if author_element:
+        author_name = author_element.get_text()
+        author_link = author_element['href']
+    else:
+        author_name = "Author not found"
+        author_link = "N/A"
+
     return jsonify({
         "title": title,
-        "content": "\n\n".join(article_text)
+        "content": "\n\n".join(article_text),
+        "author_name": author_name,
+        "author_link": author_link
     })
 
 if __name__ == '__main__':
