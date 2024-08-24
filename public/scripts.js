@@ -1,12 +1,12 @@
-document.getElementById('fetch-button').addEventListener('click', function() {
+document.getElementById('fetch-button').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent form submission
+
     const url = document.getElementById('url-input').value;
 
     if (!url) {
         alert('Please enter an article URL.');
         return;
     }
-
-    console.log("fetching article from: ", url);
 
     fetch('/api/fetch-article', {
         method: 'POST',
@@ -15,23 +15,23 @@ document.getElementById('fetch-button').addEventListener('click', function() {
         },
         body: JSON.stringify({ url: url })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
-
         console.log("data: ", data);
         const titleElement = document.getElementById('title');
         const contentElement = document.getElementById('content');
 
         if (data.title && data.content) {
-            // Update title
             titleElement.innerHTML = `<h1>${data.title}</h1>`;
-
-            // Update content with formatting
             const formattedContent = data.content
-                .split('\n\n')   // Split by double newlines
-                .map(paragraph => `<p>${paragraph}</p>`)  // Wrap each paragraph in <p> tags
-                .join('\n');     // Join paragraphs with newlines
-
+                .split('\n\n')
+                .map(paragraph => `<p>${paragraph}</p>`)
+                .join('\n');
             contentElement.innerHTML = formattedContent;
         } else {
             titleElement.innerHTML = '<h1>No title found</h1>';
@@ -42,4 +42,4 @@ document.getElementById('fetch-button').addEventListener('click', function() {
         console.error('Error:', error);
         alert('Failed to fetch the article.');
     });
-  });
+});
