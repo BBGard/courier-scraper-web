@@ -11,10 +11,6 @@ def fetch_article():
     data = request.get_json()
     url = data.get('url')
 
-    print(f"Received URL: {data.get('url')}")
-    print(f"Fetching article from: {url}")
-
-
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -50,5 +46,5 @@ def fetch_article():
         "content": "\n\n".join(article_text)
     })
 
-def handler(event, context):
-    return app(event, context)
+if __name__ == '__main__':
+    app.run(debug=True)  # Ensure debug mode is enabled for detailed error messages
