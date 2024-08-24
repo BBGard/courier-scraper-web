@@ -45,7 +45,9 @@ document.getElementById('fetch-button').addEventListener('click', function() {
         },
         body: JSON.stringify({ url: url })
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log("response: ", response);
+        response.json()})
     .then(data => {
 
         console.log("data: ", data);
